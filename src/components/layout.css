@@ -620,3 +620,15 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+.navigation {
+  margin: 30px 0 0;
+}
+.navigation a {
+  display: inline-block;
+  margin: 0 15px;
+  color: white;
+}
+.navigation a:first-child {
+  margin-left: 0;
+}
