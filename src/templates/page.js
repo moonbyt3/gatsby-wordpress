@@ -7,7 +7,7 @@ class Page extends Component {
 
     return (
       <>
-        <h1>{StaticPage.title}</h1>
+        <h1>{StaticPage.title}</h1>template
         <div>{StaticPage.content}</div>
       </>
     )

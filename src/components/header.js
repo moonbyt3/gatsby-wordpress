@@ -2,41 +2,57 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
+import { graphql, useStaticQuery } from "gatsby"
+
+import Navigation from "./navigation";
+
+const Header = ({siteTitle}) => {
+  let menu = useStaticQuery(graphql`
+    query {
+      allWordpressMenusMenusItems {
+        edges {
+          node {
+            items {
+              url
+              title
+              object_id
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  return (
+    <header
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        background: `rebeccapurple`,
+        marginBottom: `1.45rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-      <nav className="navigation">
-        <a href="/">Homepage</a>
-        <a href="/">About</a>
-        <a href="/">Contact</a>
-      </nav>
-    </div>
-    
-  </header>
-)
-
+      <div
+        style={{
+          margin: `0 auto`,
+          maxWidth: 960,
+          padding: `1.45rem 1.0875rem`,
+        }}
+      >
+        <h1 style={{ margin: 0 }}>
+          <Link
+            to="/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            {siteTitle}
+          </Link>
+        </h1>
+        <Navigation menu={menu} />
+      </div>
+    </header>
+  )  
+}
 Header.propTypes = {
   siteTitle: PropTypes.string,
 }

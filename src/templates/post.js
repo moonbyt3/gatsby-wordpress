@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -9,7 +9,7 @@ export default ({ data }) => {
       <div className="post">
         <div className="post-wrap">
             <div>
-              <h2>{data.wordpressPost.title}</h2>
+              <h2><Link to={`/${data.wordpressPost.slug}`}>{data.wordpressPost.title}</Link></h2>
               <div 
                 className="entry-content" 
                 dangerouslySetInnerHTML={{ __html: data.wordpressPost.excerpt }} 
@@ -25,6 +25,7 @@ export const pageQuery = graphql`
     wordpressPost {
       title
       excerpt
+      slug
     }
   }
 `
