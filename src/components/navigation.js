@@ -1,5 +1,5 @@
 import React from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 
 const Navigation = (data) => {
     const menu = data.menu.allWordpressMenusMenusItems.edges[0].node.items;
@@ -8,7 +8,7 @@ const Navigation = (data) => {
         <div className="navigation">
             {menu.map(item => {
                 return(
-                    <Link key={item.object_id} to={item.url}>{item.title}</Link>
+                    <Link key={item.object_id} to={item.url || '/'}>{item.title}</Link>
                 )
             })}
         </div>

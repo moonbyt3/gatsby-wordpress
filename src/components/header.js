@@ -13,16 +13,16 @@ const Header = ({siteTitle}) => {
         edges {
           node {
             items {
-              url
               title
+              url
               object_id
             }
           }
         }
       }
     }
-  `)
-
+  `);
+  
   return (
     <header
       style={{
@@ -39,7 +39,7 @@ const Header = ({siteTitle}) => {
       >
         <h1 style={{ margin: 0 }}>
           <Link
-            to="/"
+            to={'/'}
             style={{
               color: `white`,
               textDecoration: `none`,

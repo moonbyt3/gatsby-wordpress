@@ -12,9 +12,13 @@ module.exports = {
          * The base URL of the WordPress site without the trailingslash and the protocol. This is required.
          * Example : 'demo.wp-api.org' or 'www.example-site.com'
          */
-        baseUrl: `localhost/moonbyt3`,
+        baseUrl: `localhost/gatsby-test`,
         // The protocol. This can be http or https.
         protocol: `http`,
+        searchAndReplaceContentUrls: {
+          sourceUrl: "http://localhost/gatsby-test", // WordPress URL
+          replacementUrl: "", // Gatsby URL
+        },
         // Indicates whether the site is hosted on wordpress.com.
         // If false, then the assumption is made that the site is self hosted.
         // If true, then the plugin will source its content on wordpress.com using the JSON REST API V2.

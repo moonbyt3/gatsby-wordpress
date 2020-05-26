@@ -50,6 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
  
   const postTemplate = path.resolve(`./src/templates/post.js`)
+  const pageTemplate = path.resolve(`./src/templates/page.js`)
   // We want to create a detailed page for each
   // post node. We'll just use the WordPress Slug for the slug.
   // The Post ID is prefixed with 'POST_'
@@ -62,4 +63,15 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  allWordpressPage.edges.forEach(edge => {
+    createPage({
+      path: `pages/${edge.node.slug}/`,
+      component: slash(pageTemplate),
+      context: {
+        id: edge.node.id,
+      },
+    })
+  })
+
 }
